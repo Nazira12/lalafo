@@ -1,0 +1,27 @@
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    background: rgba(37, 184, 231, 1);
+    padding: 15px 12%;
+    align-items: center;
+}
+
+.logo{
+    font-size: 28px;
+    font-weight: 800px;
+    text-decoration: none;
+    color: white;
+}
+
+.links a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.links{
+    display: flex;
+    grid-gap: 15px;
+}
+

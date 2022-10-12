@@ -1,0 +1,11 @@
+.form {
+    margin-top: 50px;
+    display: grid;
+    grid-gap: 20px;
+    width: 500px;
+}
+
+.input, .button {
+    font-size: 22px;
+    padding: 10px;
+}

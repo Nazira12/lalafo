@@ -1,0 +1,15 @@
+.mainBlock{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+}
+
+.image{
+    width: 100%;
+    border-radius: 15px;
+}
+
+.infoWrapper{
+    display: grid;
+    grid-gap: 20px;
+}

@@ -1,0 +1,1 @@
+export const base_url = "https://633b2afd471b8c39557dc8d6.mockapi.io/"

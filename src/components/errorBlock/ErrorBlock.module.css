@@ -1,0 +1,15 @@
+.wrapper{
+    margin: 100px auto;
+    display: grid;
+    grid-gap: 50px;
+    
+}
+
+.wrapper img{
+    width: 450px;
+    margin: 0 auto;
+}
+
+.wrapper h1{
+    text-align: center;
+}

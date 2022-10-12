@@ -1,0 +1,7 @@
+.cardsWrapper{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    grid-gap: 20px;
+}
