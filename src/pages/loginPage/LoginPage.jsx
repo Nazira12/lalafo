@@ -1,28 +1,37 @@
 import css from "./LoginPage.module.css"
 import Title from "../../components/title/Title"
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { authSliceAction } from "./../../redux/slice"
+
 
 
 function LoginPage(){
     const [value, setValue] = useState("")
     const [password, setPassword] = useState("")
-    const navigate = useNavigate()
+
+    const [error, setError] = useState("")
+
+    const dispatch = useDispatch()
 
     const submit = (event) => {
         event.preventDefault()
         alert(value + password)
             if(value == "admin"){
-               navigate("./dashboard")
+              dispatch( authSliceAction.setAuth(true) )
+            }else{
+              setError("Login or password incorect, please try again!")
             }
     }
 
     const handleLoginChange = (event) => {
         setValue(event.target.value)
+        setError('')
     }
 
     const handlePasswordChange = (event) => {
         setPassword(event.target.value)
+        setError('')
     }
 
     return(
@@ -33,7 +42,8 @@ function LoginPage(){
             <input className={css.input} value={value} onChange={handleLoginChange} type="text" placeholder="Login"/>
             <p>Password</p> 
             <input className={css.input} password={password} onChange={handlePasswordChange} type="password" placeholder="Password"/>
-            <button className={css.button}>Войти</button>
+            <button className={css.button}>Войти</button> 
+            <div className="error-message">{error}</div>
             </form>
         </div>
     )

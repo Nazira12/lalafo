@@ -1,0 +1,11 @@
+.wrapper{
+    display: grid;
+    grid-gap: 0.5em;
+    margin: 20px 0;
+}
+
+.wrapper input{
+   font-size: 18px;
+   padding: 8px; 
+   border-radius: 10px;
+}

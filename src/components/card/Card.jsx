@@ -1,7 +1,20 @@
 import css from "./Card.module.css"
 import { Link } from "react-router-dom"
+import Api from "../../api/Api"
 
 function Card(props) {
+
+  const onDelete = () =>{
+    const res = window.confirm("Вы действительно хотите удалить")
+    
+    if(res){
+     Api.deleteHouse(props.id)
+      .finally(() => {
+        window.location.reload()
+      })
+    }
+  }
+
     return(
         <div className={css.wrapper}>
             <div className={css.imageWrapper}>
@@ -10,9 +23,13 @@ function Card(props) {
                 alt={props.text} />
             </div>
           <div className={css.footer}>
-            <div>{props.text}</div>
+            <div className={css.title}>{props.text}</div>
             <div>{props.price}$</div>
-            <Link to={'/product/' + props.id}><button>Подробнее</button></Link>
+          { props.isAdmin
+          ? <button className="btn-primary" onClick={onDelete}>Удалить</button>
+            : <Link  to={'/product/' + props.id}>
+              <button className={`btn-primary ${css.btn}`}>Подробнее</button></Link>
+          }
           </div>
         </div> 
     )

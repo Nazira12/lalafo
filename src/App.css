@@ -11,3 +11,31 @@
 .center{
   text-align: center;
 }
+
+.error-message{
+  color: red;
+  font-size: 14px;
+}
+
+.btn-primary{
+  background: rgb(83, 83, 245);
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all linear 0.3s;
+}
+
+.btn-primary:hover{
+  background: rgb(108, 108, 246);
+  box-shadow: 0 0 4px rgb(108, 108, 246);
+}
+
+.btn-primary:disabled{
+  cursor: not-allowed;
+  background: rgb(199, 199, 199);
+  color: rgb(114, 114, 114);
+}
