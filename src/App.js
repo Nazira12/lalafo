@@ -17,6 +17,7 @@ import PublicRoute from "./components/routes/PublicRoute";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import { useDispatch } from "react-redux";
 import { housesSliceAction } from "./redux/housesSlice";
+import { carsSliceAction } from "./redux/carsSlice";
 
 
 function App() {
@@ -27,6 +28,10 @@ function App() {
     .then((res) => {
         console.log(res)
       dispatch( housesSliceAction.setData(res.data) )  
+    })
+    Api.getCars()
+    .then((res) => {
+      dispatch( carsSliceAction.setData(res.data))
     })
 }, [])   
 

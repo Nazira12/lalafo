@@ -8,10 +8,17 @@ function Card(props) {
     const res = window.confirm("Вы действительно хотите удалить")
     
     if(res){
-     Api.deleteHouse(props.id)
+      if(props.isCars) {
+        Api.deleteCars(props.id)
+        .finally(() => {
+          window.location.reload()
+        })
+      } else {
+          Api.deleteHouse(props.id)
       .finally(() => {
         window.location.reload()
       })
+      }
     }
   }
 

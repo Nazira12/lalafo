@@ -8,7 +8,10 @@ const http = axios.create({
 const Api = {
     getHouses: () => http.get('houses'),
     deleteHouse: (id) => http.delete('houses/' + id),
-    postHouse: (data) => http.post('houses', data)
+    postHouse: (data) => http.post('houses', data),
+    getCars: () => http.get('cars'),
+    postCars: (data) => http.post('cars', data),
+    deleteCars: (id) => http.delete('cars/' + id),
 }
 
 

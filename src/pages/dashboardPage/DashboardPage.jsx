@@ -9,6 +9,26 @@ import { useSelector } from "react-redux";
 
 function DashboardPage(){
     const { isLoading, data } = useSelector((state) => state.houses)
+    const { data: carsData } = useSelector((state) => state.cars)
+    
+    const renderCards = (d, isCars) => {
+        return d.length ? (
+            d.map((item) => (
+                <Card
+                key={item.id}
+                text={item.title}
+                price={item.price}
+                img={item.imgUrl}
+                id={item.id}
+                isAdmin={true}
+                isCars={isCars}
+                />
+            ))
+        ) : (
+            <h2>No adds</h2>
+        )
+       }
+    
     if(isLoading){
         return <Loader />
     }
@@ -18,21 +38,15 @@ function DashboardPage(){
             <Title position="center">Мои объявления</Title>
             <Link className="btn-primary" to="/create-ad">+ Create new ad</Link>
             <div className={css.cardsWrapper}>
-            {data.length 
-             ? data.map((item) => 
-             <Card 
-             key={item.id} 
-             text={item.title} 
-             price={item.price} 
-             img={item.imgUrl}
-             id={item.id}
-             isAdmin={true}
-             />)
-             : <h1>Последних объявлений нет</h1>
-        }
+            {renderCards(data, false)}
             </div>
-            
-        </div>
+            <br />
+            <br />
+            <Title position="center">Мои объявления по авто</Title>
+            <div className={css.cardsWrapper}>
+            {renderCards(carsData, true)}
+            </div>
+          </div>
     )
 }
 
