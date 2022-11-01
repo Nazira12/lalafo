@@ -3,11 +3,12 @@ import Loader from "../../components/loader/Loader";
 import Title from "../../components/title/Title";
 import css from '../homePage/HomePage.module.css'
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 
-function DashboardPage({ isLoading, housesArray }){
-
+function DashboardPage(){
+    const { isLoading, data } = useSelector((state) => state.houses)
     if(isLoading){
         return <Loader />
     }
@@ -17,8 +18,8 @@ function DashboardPage({ isLoading, housesArray }){
             <Title position="center">Мои объявления</Title>
             <Link className="btn-primary" to="/create-ad">+ Create new ad</Link>
             <div className={css.cardsWrapper}>
-            {housesArray.length 
-             ? housesArray.map((item) => 
+            {data.length 
+             ? data.map((item) => 
              <Card 
              key={item.id} 
              text={item.title} 

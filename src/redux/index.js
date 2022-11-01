@@ -1,9 +1,10 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import {authSliceReducer} from "./../redux/slice";
+import { housesSliceReducer } from "./housesSlice";
 
 const reducers = combineReducers({
     auth: authSliceReducer,
-    // houses: housesSlice.reducer
+    houses: housesSliceReducer
 })
 
 export const store = configureStore({
@@ -17,4 +18,3 @@ store.subscribe(() => {
 
 console.log(store)
 
-//private route public route прочитать и сделать 

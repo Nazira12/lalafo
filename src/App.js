@@ -15,21 +15,18 @@ import Api from "./api/Api";
 import {store} from "./redux/index"
 import PublicRoute from "./components/routes/PublicRoute";
 import PrivateRoute from "./components/routes/PrivateRoute";
+import { useDispatch } from "react-redux";
+import { housesSliceAction } from "./redux/housesSlice";
 
 
 function App() {
-  const [housesArray, setHousesArray ]= useState([])
-  const [isLoading, setLoading]= useState(true)
-  
+  const dispatch = useDispatch()
+
   useEffect(() => {
     Api.getHouses()
-    .finally(()=>{
-        setLoading(false)
-    })
     .then((res) => {
         console.log(res)
-        setHousesArray(res.data)
-        
+      dispatch( housesSliceAction.setData(res.data) )  
     })
 }, [])   
 
@@ -37,7 +34,7 @@ function App() {
     <div className="App">
     <Header />
     <Routes>
-      <Route path="/" element={<HomePage isLoading={isLoading} housesArray={housesArray} />}/>
+      <Route path="/" element={<HomePage  />}/>
       <Route path="/product/:id" element={<ProductPage />} />
       <Route path="/login" element={
       <PublicRoute>
@@ -46,7 +43,7 @@ function App() {
       }/>
       <Route path="/dashboard" element={
       <PrivateRoute>
-        <DashboardPage isLoading={isLoading} housesArray={housesArray}/>
+        <DashboardPage />
       </PrivateRoute>
       }/>
       <Route path="/create-ad" element={

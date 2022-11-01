@@ -24,7 +24,7 @@ function Header(){
                 {isAuth ?
                 <div> 
                 <Link to="/dashboard">Личный кабинет  </Link> 
-                <button onClick={submit}>Выйти</button>
+                <span onClick={submit}>Выйти</span>
                 </div>
                 : <Link to="/login">Войти</Link>}
             </div>
